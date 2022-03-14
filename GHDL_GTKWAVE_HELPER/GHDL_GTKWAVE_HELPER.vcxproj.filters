@@ -2,103 +2,16 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_7z.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_dir.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_grp.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_hog.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_iso9660.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_mvl.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_qpak.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_slb.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_unpacked.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_vdf.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_wad.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_zip.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_byteorder.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_platform_os2.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_platform_posix.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_platform_qnx.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_platform_unix.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_platform_windows.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_unicode.c">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_platform_haiku.cpp">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
-    <ClCompile Include="..\deps\PhysFS\src\physfs_platform_winrt.cpp">
-      <Filter>PhysFS ref</Filter>
-    </ClCompile>
     <ClCompile Include="imported\downloader.cpp">
       <Filter>imported</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="PhysFS ref">
-      <UniqueIdentifier>{ef479fbc-6f7c-4c84-a4fd-5153ac87eae2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="imported">
       <UniqueIdentifier>{9c9d75cd-97b5-437e-846d-e9913ad1665c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\deps\PhysFS\src\physfs.h">
-      <Filter>PhysFS ref</Filter>
-    </ClInclude>
-    <ClInclude Include="..\deps\PhysFS\src\physfs_casefolding.h">
-      <Filter>PhysFS ref</Filter>
-    </ClInclude>
-    <ClInclude Include="..\deps\PhysFS\src\physfs_internal.h">
-      <Filter>PhysFS ref</Filter>
-    </ClInclude>
-    <ClInclude Include="..\deps\PhysFS\src\physfs_lzmasdk.h">
-      <Filter>PhysFS ref</Filter>
-    </ClInclude>
-    <ClInclude Include="..\deps\PhysFS\src\physfs_miniz.h">
-      <Filter>PhysFS ref</Filter>
-    </ClInclude>
-    <ClInclude Include="..\deps\PhysFS\src\physfs_platforms.h">
-      <Filter>PhysFS ref</Filter>
-    </ClInclude>
     <ClInclude Include="imported\downloader.h">
       <Filter>imported</Filter>
     </ClInclude>

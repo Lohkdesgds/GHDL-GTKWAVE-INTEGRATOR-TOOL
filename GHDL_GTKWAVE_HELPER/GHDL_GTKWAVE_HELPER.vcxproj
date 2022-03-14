@@ -72,23 +72,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)deps\PhysFS\src;$(SolutionDir)deps\Lunaris;$(SolutionDir)deps\nlohmann\json\single_include\nlohmann;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)deps\PhysFS\src;$(SolutionDir)deps\Lunaris;$(SolutionDir)deps\nlohmann\json\single_include\nlohmann;$(VC_IncludePath);$(WindowsSDK_IncludePath);</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)deps\Lunaris;$(SolutionDir)deps\nlohmann\json\single_include\nlohmann;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)deps\Lunaris;$(SolutionDir)deps\nlohmann\json\single_include\nlohmann;$(VC_IncludePath);$(WindowsSDK_IncludePath);</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)deps\PhysFS\src;$(SolutionDir)deps\Lunaris;$(SolutionDir)deps\nlohmann\json\single_include\nlohmann;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)deps\PhysFS\src;$(SolutionDir)deps\Lunaris;$(SolutionDir)deps\nlohmann\json\single_include\nlohmann;$(VC_IncludePath);$(WindowsSDK_IncludePath);</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)deps\Lunaris;$(SolutionDir)deps\nlohmann\json\single_include\nlohmann;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)deps\Lunaris;$(SolutionDir)deps\nlohmann\json\single_include\nlohmann;$(VC_IncludePath);$(WindowsSDK_IncludePath);</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)deps\PhysFS\src;$(SolutionDir)deps\Lunaris;$(SolutionDir)deps\nlohmann\json\single_include\nlohmann;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)deps\PhysFS\src;$(SolutionDir)deps\Lunaris;$(SolutionDir)deps\nlohmann\json\single_include\nlohmann;$(VC_IncludePath);$(WindowsSDK_IncludePath);</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)deps\Lunaris;$(SolutionDir)deps\nlohmann\json\single_include\nlohmann;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)deps\Lunaris;$(SolutionDir)deps\nlohmann\json\single_include\nlohmann;$(VC_IncludePath);$(WindowsSDK_IncludePath);</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)deps\PhysFS\src;$(SolutionDir)deps\Lunaris;$(SolutionDir)deps\nlohmann\json\single_include\nlohmann;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)deps\PhysFS\src;$(SolutionDir)deps\Lunaris;$(SolutionDir)deps\nlohmann\json\single_include\nlohmann;$(VC_IncludePath);$(WindowsSDK_IncludePath);</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)deps\Lunaris;$(SolutionDir)deps\nlohmann\json\single_include\nlohmann;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)deps\Lunaris;$(SolutionDir)deps\nlohmann\json\single_include\nlohmann;$(VC_IncludePath);$(WindowsSDK_IncludePath);</ExternalIncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -161,38 +161,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\deps\PhysFS\src\physfs.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_7z.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_dir.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_grp.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_hog.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_iso9660.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_mvl.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_qpak.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_slb.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_unpacked.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_vdf.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_wad.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_archiver_zip.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_byteorder.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_platform_haiku.cpp" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_platform_os2.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_platform_posix.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_platform_qnx.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_platform_unix.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_platform_windows.c" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_platform_winrt.cpp" />
-    <ClCompile Include="..\deps\PhysFS\src\physfs_unicode.c" />
     <ClCompile Include="imported\downloader.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\deps\PhysFS\src\physfs.h" />
-    <ClInclude Include="..\deps\PhysFS\src\physfs_casefolding.h" />
-    <ClInclude Include="..\deps\PhysFS\src\physfs_internal.h" />
-    <ClInclude Include="..\deps\PhysFS\src\physfs_lzmasdk.h" />
-    <ClInclude Include="..\deps\PhysFS\src\physfs_miniz.h" />
-    <ClInclude Include="..\deps\PhysFS\src\physfs_platforms.h" />
     <ClInclude Include="..\shared\dumb_zipper.h" />
     <ClInclude Include="imported\downloader.h" />
   </ItemGroup>
