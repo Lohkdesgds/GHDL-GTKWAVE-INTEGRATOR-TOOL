@@ -19,6 +19,8 @@ const std::string mytmpfile = "download.folder";
 const std::string expected_ghdl = "runtime\\ghdl\\bin\\ghdl.exe";
 const std::string expected_gtkw = "runtime\\gtkwave\\bin\\gtkwave.exe";
 
+const std::string versioning = "V1.0.2";
+
 std::string getenv_custom(const std::string&);
 // url, path
 bool download_to(const std::string&, const std::string&);
@@ -34,6 +36,7 @@ int main(int argc, char* argv[])
 		cout << console::color::AQUA << "========================================================";
 	}
 
+	cout << console::color::DARK_GRAY << "[Setup] Version: " << versioning;
 	cout << console::color::DARK_GRAY << "[Setup] Getting needed information to work...";
 
 	const std::string envpath = [] {const auto i = getenv_custom("APPDATA"); if (!i.empty()) return i + "\\GHDLGTKW_by_Lunaris\\"; return std::string{}; }();
@@ -245,6 +248,7 @@ std::vector<std::string> sliceup(const std::string& in)
 		for (const auto& i : in) {
 			if (on_ignore) {
 				on_ignore = false;
+				token += i;
 				continue;
 			}
 			switch (i) {
