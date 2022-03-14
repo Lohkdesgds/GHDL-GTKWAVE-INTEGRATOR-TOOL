@@ -1,0 +1,9 @@
+[submodule "deps/Lunaris/Console"]
+	path = deps/Lunaris/Console
+	url = https://www.github.com/Lohkdesgds/Lunaris-Console
+[submodule "deps/Lunaris/Process"]
+	path = deps/Lunaris/Process
+	url = https://www.github.com/Lohkdesgds/Lunaris-Process
+[submodule "deps/nlohmann/json"]
+	path = deps/nlohmann/json
+	url = https://www.github.com/nlohmann/json
