@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
 			if (in.find("gtkw") == 0) {
 				if (in.find("gtkw ") == 0) {
 					in.erase(in.begin(), in.begin() + 4);
-					cout << console::color::YELLOW << "[GTKW] Calling 'gtkw.exe " << in << "'...";
+					cout << console::color::YELLOW << "[GTKW] Calling 'gtkwave.exe " << in << "'...";
 				}
 				else {
 					in.clear();
@@ -164,8 +164,8 @@ int main(int argc, char* argv[])
 
 				cout << console::color::YELLOW << "[Help] Commands available:";
 				cout << console::color::YELLOW << "# " << console::color::LIGHT_PURPLE << "install: " << console::color::GRAY << "Get stuff needed for GHDL/GTKW to work, including themselves;";
-				cout << console::color::YELLOW << "# " << console::color::LIGHT_PURPLE << "gtkw: " << console::color::GRAY << "Calls for gtkw with your arguments, exactly as manually calling it on cmd. It keeps session if needed;";
-				cout << console::color::YELLOW << "# " << console::color::LIGHT_PURPLE << "ghdl: " << console::color::GRAY << "Calls for gtkw with your arguments, exactly as manually calling it on cmd. It keeps session if needed;";
+				cout << console::color::YELLOW << "# " << console::color::LIGHT_PURPLE << "gtkw: " << console::color::GRAY << "Calls for gtkwave with your arguments, exactly as manually calling it on cmd. If no argument, immersive mode instead;";
+				cout << console::color::YELLOW << "# " << console::color::LIGHT_PURPLE << "ghdl: " << console::color::GRAY << "Calls for gtkw with your arguments, exactly as manually calling it on cmd. If no argument, immersive mode instead;";
 				cout << console::color::YELLOW << "# " << console::color::LIGHT_PURPLE << "exit: " << console::color::GRAY << "Closes the app.";
 				cout << console::color::YELLOW << "# " << console::color::GREEN << "If you need more help, please consider joining the UTFPR unoficial Discord server at https://discord.gg/xrtz3VjAus or call @lohkdesgds on Twitter.";
 			}
