@@ -167,6 +167,13 @@
   <ItemGroup>
     <ClInclude Include="..\shared\dumb_zipper.h" />
     <ClInclude Include="imported\downloader.h" />
+    <ClInclude Include="resource1.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GHDL_GTKWAVE_HELPER1.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="latest.folder" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

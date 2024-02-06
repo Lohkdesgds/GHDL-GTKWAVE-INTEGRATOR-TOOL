@@ -9,21 +9,22 @@
 #include <sstream>
 #include "imported/downloader.h"
 #include "../shared/dumb_zipper.h"
+#include <windows.h>
+#include "resource1.h"
 
 using namespace Lunaris;
 
 // Discord is easier to share stuff around.
-const std::string download_path = "https://cdn.discordapp.com/attachments/950728646224646164/952771590079279114/latest.folder";
 
 const std::string mytmpfile = "download.folder";
 const std::string expected_ghdl = "runtime\\ghdl\\bin\\ghdl.exe";
 const std::string expected_gtkw = "runtime\\gtkwave\\bin\\gtkwave.exe";
 
-const std::string versioning = "V1.0.2";
+const std::string versioning = "V1.1.0";
 
 std::string getenv_custom(const std::string&);
 // url, path
-bool download_to(const std::string&, const std::string&);
+//bool download_to(const std::string&, const std::string&);
 
 std::vector<std::string> sliceup(const std::string&);
 
@@ -32,7 +33,7 @@ int main(int argc, char* argv[])
 	if (argc == 1) {
 		cout << console::color::AQUA << "========================================================";
 		cout << console::color::AQUA << "=         GHDL & GTKW integrator tool by Lohk          =";
-		cout << console::color::AQUA << "=                         2022                         =";
+		cout << console::color::AQUA << "=                         2024                         =";
 		cout << console::color::AQUA << "========================================================";
 	}
 
@@ -121,8 +122,16 @@ int main(int argc, char* argv[])
 
 			cout << console::color::YELLOW << "[GHDL] Task ended.";
 		}
+		else if (in.find("uninstall") == 0) {
+			cout << console::color::YELLOW << "[Install] Deleting folder...";
+
+			std::filesystem::remove_all(envpath);
+
+			cout << console::color::YELLOW << "[Install] Deleted.";
+
+		}
 		else if (in.find("install") == 0) {
-			cout << console::color::YELLOW << "[Install] Starting to download necessary stuff...";
+			cout << console::color::YELLOW << "[Install] Starting...";
 			cout << console::color::YELLOW << "# Setting up basic path...";
 
 			{
@@ -131,19 +140,42 @@ int main(int argc, char* argv[])
 				if (err) { cout << console::color::RED << "# (ABORT) Error setting up main path: " << err.message(); return 1; }
 			}
 
-			cout << console::color::YELLOW << "# Downloading package...";
+			cout << console::color::YELLOW << "# Finding package...";
 
-			if (!download_to(download_path, envpath + mytmpfile)) { cout << console::color::RED << "# (ABORT) Error downloading package. Please try again later or contact developer!"; return 1; }
+			const auto save_to_fp = envpath + mytmpfile;
 
+			{
+				std::ofstream ofp(save_to_fp.c_str(), std::ios::binary | std::ios::out);
+
+				HRSRC myResource = ::FindResource(NULL, MAKEINTRESOURCE(IDR_FOLDER1), L"FOLDER");
+				DWORD myResourceSize = ::SizeofResource(NULL, myResource); // bytes
+				HGLOBAL myResourceData = ::LoadResource(NULL, myResource);
+				char* pMyBinaryData = (char*) ::LockResource(myResourceData);
+
+				DWORD i = 0;
+				char buffer[8192];
+
+				while (i < myResourceSize) {
+					DWORD bufsize = std::min<DWORD>(myResourceSize - i, sizeof(buffer));
+					CopyMemory(buffer, pMyBinaryData + i, bufsize);					
+					ofp.write(buffer, bufsize);
+					i += bufsize;
+				}
+
+				UnlockResource(myResourceData);
+			}
+
+			//if (!download_to(download_path, envpath + mytmpfile)) { cout << console::color::RED << "# (ABORT) Error downloading package. Please try again later or contact developer!"; return 1; }
+			
 			cout << console::color::YELLOW << "# Extracting funky package...";
 
-			if (!DUMB::make_file_folder(envpath + mytmpfile, envpath,
+			if (!DUMB::make_file_folder(save_to_fp, envpath,
 				[](const DUMB::ongoing_info& info) { printf_s("[ %06.3lf%% ] \r", (100.0 * info.totalfiles.current / (info.totalfiles.total ? info.totalfiles.total : 1))); }))
 			{
 				cout << console::color::RED << "# (ABORT) Error extracting package. Please try again later or contact developer!"; return 1;
 			}
 
-			::remove((envpath + mytmpfile).c_str());
+			::remove(save_to_fp.c_str());
 
 			cout << console::color::YELLOW << "# All good! Things should be installed now.";
 		}
@@ -155,6 +187,7 @@ int main(int argc, char* argv[])
 
 			cout << console::color::YELLOW << "[Help] Commands available:";
 			cout << console::color::YELLOW << "# " << console::color::LIGHT_PURPLE << "install: " << console::color::GRAY << "Get stuff needed for GHDL/GTKW to work, including themselves;";
+			cout << console::color::YELLOW << "# " << console::color::LIGHT_PURPLE << "uninstall: " << console::color::GRAY << "Undo install;";
 			cout << console::color::YELLOW << "# " << console::color::LIGHT_PURPLE << "gtkw: " << console::color::GRAY << "Calls for gtkwave with your arguments, exactly as manually calling it on cmd. If no argument, immersive mode instead;";
 			cout << console::color::YELLOW << "# " << console::color::LIGHT_PURPLE << "ghdl: " << console::color::GRAY << "Calls for gtkw with your arguments, exactly as manually calling it on cmd. If no argument, immersive mode instead;";
 			cout << console::color::YELLOW << "# " << console::color::LIGHT_PURPLE << "exit: " << console::color::GRAY << "Closes the app.";
@@ -173,7 +206,11 @@ int main(int argc, char* argv[])
 		for (int a = 1; a < argc; ++a)
 		{
 			try {
-				func_work(argv[a]);
+				const int res = func_work(argv[a]);
+				if (res < 0) {
+					cout << console::color::YELLOW << "[CmdLine] Call returned exit().";
+					return 0;
+				}
 			}
 			catch (const std::exception& e) {
 				cout << console::color::RED << "BAD EXCEPTION: " << e.what();
@@ -200,7 +237,11 @@ int main(int argc, char* argv[])
 		std::getline(std::cin, in);
 
 		try {
-			func_work(in);
+			const int res = func_work(in);
+			if (res < 0) {
+				cout << console::color::YELLOW << "[CmdLine] Call returned exit().";
+				return 0;
+			}
 		}
 		catch (const std::exception& e) {
 			cout << console::color::RED << "BAD EXCEPTION: " << e.what();
@@ -227,17 +268,17 @@ std::string getenv_custom(const std::string& nam)
 	return buf;
 }
 
-bool download_to(const std::string& url, const std::string& sav)
-{
-	if (sav.empty() || url.empty()) return false;
-	std::ofstream ofp(sav.c_str(), std::ios::binary | std::ios::out);
-	if (!ofp) return false;
-
-	downloader down;
-	if (!down.get_store(url, [&](const char* data, const size_t len) { ofp.write(data, len); })) return false;
-
-	return true;
-}
+//bool download_to(const std::string& url, const std::string& sav)
+//{
+//	if (sav.empty() || url.empty()) return false;
+//	std::ofstream ofp(sav.c_str(), std::ios::binary | std::ios::out);
+//	if (!ofp) return false;
+//
+//	downloader down;
+//	if (!down.get_store(url, [&](const char* data, const size_t len) { ofp.write(data, len); })) return false;
+//
+//	return true;
+//}
 
 std::vector<std::string> sliceup(const std::string& in)
 {
